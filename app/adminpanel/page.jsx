@@ -32,10 +32,43 @@ export default function page() {
 
     }
 
-    if(!Cookies.get('Admin')){
+    if(Cookies.get('Admin')){
+        const accesscontroler = Cookies.get('Admin')
+    if(accesscontroler === process.env.NEXT_PUBLIC_ADMINPASSWORD){
+      
 
-        setTimeout(() => {
-             return(         
+
+        return(         
+            <>
+          <div className="admin">
+            <div className="adminpanel">
+                <div className="leftpanel">
+                    <div className="bar">
+                    <div className="logo"><img src="/PowerToolPlaza.png" width={250} alt="" /></div>
+                    <br />
+                    <div className="sectionspanel">
+
+
+
+                    </div>
+                    </div>
+                </div>
+                <div className="rightanswer"></div>
+
+            </div>
+          </div>
+            </>                     
+             
+        )
+
+    }
+
+
+          
+
+       
+    }else{
+        return(         
             <>
             <div className="logo"><img src="/PowerToolPlaza.png" width={250} alt="" /></div>
             <div className="adminlogin flex items-center justify-center">
@@ -51,8 +84,6 @@ export default function page() {
             </>                     
              
         )
-        }, 2500);
-       
     }
         
 
@@ -61,35 +92,7 @@ export default function page() {
         
 
   
-  const accesscontroler = Cookies.get('Admin')
-    if(accesscontroler === process.env.NEXT_PUBLIC_ADMINPASSWORD){
-      
-
-
-        return(         
-            <>
-          <div className="admin">
-            <div className="adminpanel">
-                <div className="leftpanel">
-                    <div className="bar">
-                    <div className="logo"><img src="/PowerToolPlaza.png" width={250} alt="" /></div>
-                    <br />
-                    <div className="sectionspanel">
-                        
-
-
-                    </div>
-                    </div>
-                </div>
-                <div className="rightanswer"></div>
-
-            </div>
-          </div>
-            </>                     
-             
-        )
-
-    }
+  
 
 
 
