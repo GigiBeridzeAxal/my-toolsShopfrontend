@@ -7,27 +7,171 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  padding: 15px; 
+}
+.headerframe{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Connectbtn{
+  border: 1px solid rgb(167, 167, 167);
+  border-radius: 5px;
+  padding: 5px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color:rgb(101, 101, 101) ;
+gap: 5px;
+}
+.sections{
+  align-items: center;
+}
+.sectionssec{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px; 
+
+}
+.sectionsframe{
+  width: 60%;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.secleft{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.shop{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shopframe{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search{
+  width: 100%;
+  padding: 10px;
+}
+.searchtittle{
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+.search input{
+
+  width: 600px;
+  outline: 0;
+  border: 0;
+
+
+
+}
+.searchinput{
+
+  padding: 15px;
+  border: 1px solid black;
+  display: flex;
+  gap: 5px;
+  width: 95%;
+  border-radius: 10px;
+
+}
+.searchbtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 64px;
+  border-radius: 10px;
+  position: absolute;
+  width: 150px;
+  left: 87%;
+}
+.searchtittle{
+  margin-bottom: 15px;
+}
+.shopframe{
+  flex-direction: column;
+}
+.categoryes{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.reviews{
+  font-size: 13px;
+}
+.newest{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.addtocart{
+  border: 1px solid black;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.card .left{
+  display: flex;
+  flex-direction: column;
+
+}
+.card{
+  padding: 10px;
+  background-color: white;
+
+  box-shadow: 5px 5px 21px 1px rgb(214, 214, 214);
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adminlogin{
+  height: 800px;
+  width: 100%;
+}
+.adminloginframe input{
+  width: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+
+}
+.adminloginframe{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.adminloginframe a{
+  padding: 10px;
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adminpaneltittle{
+  font-size: 34px;
+  font-weight: 600;
 }
