@@ -1,8 +1,56 @@
-import React from 'react'
-
+'use client'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import {motion} from 'framer-motion'
 export default function Shop() {
+
+  const [limitednews , setlimitednews] = useState(['loading..'] ,)
+  const [limitedprice , setlimitedprice] = useState(['loading..'] ,)
+  const [xer, setx] = useState()
+  const [yer, sety] = useState()
+  const [clickedbuy , setclickedbuy] = useState(false)
+
+  if(clickedbuy == true){
+    setTimeout(() => {
+      setclickedbuy(false)
+    }, 300);
+  }
+  
+  useEffect(() => {
+const getdata = async() => {
+
+  
+
+    const data = await axios.get('http://localhost:4000/')
+    const limitedbyprice = await axios.get('http://localhost:4000/limitedbyprice')
+    setlimitedprice(limitedbyprice.data)
+    setlimitednews(data.data)
+     console.log(limitednews)
+     
+
+
+  }
+  getdata()
+
+
+  },[])
+ window.addEventListener('mousemove' , (e) => {
+      setx(e.pageX)
+      sety(e.pageY)
+
+
+    })
+  if(limitednews[0] === 'loading..' ){
+
+   
+
+  }else{ 
+  
+
   return (
     <div className="shop">
+      {clickedbuy == true ?  <motion.img style={{left:xer , top:yer}} initial={{left:xer , top:yer}} transition={{duration:0.3}} animate={{left:'68%' , top:'3%'}} className='buyanimation  absolute'  src="/Buying.png" width={30} alt="" /> :  <motion.img className='buyanimation absolute' style={{ display:'none' , left:xer , top:yer}} src="/Buying.png" width={30} alt="" />}
+   
         <div className="shopframe">
 
 
@@ -33,90 +81,110 @@ export default function Shop() {
             <div className="newtittle">უახლესი შემოთავაზებები</div>
             <br />
             <div className="newlist flex items-center gap-3">
-            <div className="card gap-4 flex">
-                <div className="left  gap-3">
-                <div className="cardtittle text-gray-500">მეორადი ტექნიკა</div>
-                <div className="cardproduct">2022 KUBOTA MX6000 HSTC</div>
-                <div className="cardstar flex gap-3 items-center"><div className="stars flex items-center gap-1">
-                  
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-
-                  
-                  </div> <div className="reviews text-gray-500">(5 შეფასება)</div></div>
-                  <div className="price flex items-center gap-3"><div className="price text-emerald-500">490.99$</div> <img className='addtocart' src="/Buying.png" width={30} alt="" /> </div>
+            {limitednews.map(items => (
+               <div className="card gap-4 flex">
+               <div className="left  gap-3">
+               <div className="cardtittle text-gray-500">{items.category}</div>
+               <div className="cardproduct">{items.name}</div>
+               <div className="cardstar flex gap-3 items-center"><div className="stars flex items-center gap-1">
                  
-                 
-                </div>
-                <div className="right flex justify-center items-center">
+               {items.stars >= 1 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+               {items.stars >= 2 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+               {items.stars >= 3 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+               {items.stars >= 4 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
 
-<img src="/Tractor.png" width={150} alt="" />
+                 
+                 </div> <div className="reviews text-gray-500">({items.review} შეფასება)</div></div>
+                 <div className="price flex items-center gap-3"><div className="price text-emerald-500">{items.price} $</div> <button onClick={() => setclickedbuy(true)} ><img className='addtocart' src="/Buying.png" width={30} alt="" /> </button></div>
+                
+                
+               </div>
+               <div className="right flex justify-center items-center">
+
+<img src={items.image} width={150} alt="" />
 
 </div>
 
 
-                
+               
 
-              </div>
-              <div className="card gap-4 flex">
-                <div className="left  gap-3">
-                <div className="cardtittle text-gray-500">სამუშაო ტექნიკა</div>
-                <div className="cardproduct">Skil 7-14 14A Circular Saw</div>
-                <div className="cardstar flex gap-3 items-center"><div className="stars flex items-center gap-1">
-                  
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
+                           
 
-                  
-                  </div> <div className="reviews text-gray-500">(8 შეფასება)</div></div>
-                  <div className="price flex items-center gap-3"><div className="price text-emerald-500">230.99$</div> <img className='addtocart' src="/Buying.png" width={30} alt="" /> </div>
-                 
-                 
-                </div>
-                <div className="right">
+               
 
-<img src="/Skill7-14.png" width={150} alt="" />
-
-</div>
-
-                
-
-              </div>
-              <div className="card gap-4 flex">
-                <div className="left  gap-3">
-                <div className="cardtittle text-gray-500">სამუშაო ტექნიკა</div>
-                <div className="cardproduct">Skil 7-14 14A Circular Saw</div>
-                <div className="cardstar flex gap-3 items-center"><div className="stars flex items-center gap-1">
-                  
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-                <img src="/Star.png" width={15} alt="" />
-
-
-                  
-                  </div> <div className="reviews text-gray-500">(13 შეფასება)</div></div>
-                  <div className="price flex items-center gap-3"><div className="price text-emerald-500">230.99$</div> <img className='addtocart' src="/Buying.png" width={30} alt="" /> </div>
-                 
-                 
-                </div>
-                <div className="right">
-
-<img src="/Skill7-14.png" width={150} alt="" />
-
-</div>
-
-                
-
-              </div>
+             </div>
+            ))}
+           
+            
 
             </div>
+           </div>
+           <div className="newest">
+            <div className="newtittle">იაფი შემოთავაზებები</div>
+            <br />
+            <div className="newlist flex items-center gap-3">
+            {limitedprice.map(items => (
+               <div className="card gap-4 flex">
+               <div className="left  gap-3">
+               <div className="cardtittle text-gray-500">{items.category}</div>
+               <div className="cardproduct">{items.name}</div>
+               <div className="cardstar flex gap-3 items-center"><div className="stars flex items-center gap-1">
+                 
+               {items.stars >= 1 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+               {items.stars >= 2 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+               {items.stars >= 3 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+               {items.stars >= 4 ?         <img src="/Star.png" width={15} alt="" />
+               : <div></div>}
+
+                 
+                 </div> <div className="reviews text-gray-500">({items.review} შეფასება)</div></div>
+                 <div className="price flex items-center gap-3"><div className="price text-emerald-500">{items.price} $</div> <img className='addtocart' src="/Buying.png" width={30} alt="" /> </div>
+                
+                
+               </div>
+               <div className="right flex justify-center items-center">
+
+<img src={items.image} width={150} alt="" />
+
+</div>
+
+
+               
+
+                           
+
+               
+
+             </div>
+            ))}
+           
+            
+
+            </div>
+           </div>
+
+           <div className="sale">
+
+            <div className="saleframe">
+              <div className="timer">
+
+              </div>
+              <div className="items">
+
+              </div>
+            </div>
+
            </div>
 
         </div>
     </div>
   )
+}
 }

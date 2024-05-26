@@ -39,7 +39,9 @@ export default function Header() {
             </div>
             <div className="right">
                 <div className="sections flex align-center justify-center gap-7">
-                    <div className="categorie"><img src="/Buying.png" width={30} alt="" /></div>
+                    <div className="categorie relative">
+
+                        <img src="/Buying.png" width={30} alt="" /></div>
                     <div className="categorie"><img src="/Email.png" width={30} alt="" /></div>
             
 

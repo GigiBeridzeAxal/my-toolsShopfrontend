@@ -175,3 +175,169 @@ gap: 5px;
   font-size: 34px;
   font-weight: 600;
 }
+.bar{
+
+
+
+  width: 100%;
+  height: 100vh;
+ background-color: #0e31f7;
+
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  padding-top: 20px;
+
+  
+}
+.logopanel{
+  padding: 30px;
+}
+.botomer{
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sectionspanel{
+  width: 100%;
+}
+.sectionspanel .tittle{
+  font-weight: 500;
+  padding: 10px;
+
+}
+.sectionspanel .option{
+
+
+  width: 100%;
+  
+  padding: 20px;
+  letter-spacing: 2px;
+
+  font-size: 18px;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.151);
+  padding-left: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.tittle{
+  text-align: start;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  
+}
+.logopanel{
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.choosed{
+  background-color: #2f4eff;
+  transition: 1s;
+}
+.leftpanel{
+  width: 15%;
+}
+.panelcreate{
+  padding: 20px;
+}
+.createtittle{
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+.optionselector{
+  background-color: #2f4eff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+
+
+}
+.panelcreate{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+}
+.panelcreateframe{
+  
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 15px;
+}
+.panelcreateframe input{
+  width: 1000px;
+  background-color: black;
+  border-radius: 5px;
+  padding: 15px;
+  color: white;
+
+
+
+}
+.sucess{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.damateba{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.aircie{
+  width: 250px;
+}
+.panelcreateframe select{
+  width: 100%;
+  background-color: black;
+  border-radius: 5px;
+  padding: 15px;
+
+
+
+}
+.rightanswer{
+  width: 100%;
+}
+.panelcreateframe button{
+  width: 100%;
+  text-align: center;
+  
+}
+.panelcreateframetittle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+.card{
+  width: 33.3%;
+}
+.sale{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  
+}
