@@ -170,19 +170,7 @@ const getdata = async() => {
             </div>
            </div>
 
-           <div className="sale">
-
-            <div className="saleframe">
-              <div className="timer">
-
-              </div>
-              <div className="items">
-
-              </div>
-            </div>
-
-           </div>
-
+         
         </div>
     </div>
   )
