@@ -2,7 +2,7 @@
 import Cookies from 'js-cookie'
 import React, { useEffect, useState } from 'react'
 
-import { useJwt } from 'react-jwt'
+
 import axios from 'axios'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
