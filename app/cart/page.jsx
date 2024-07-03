@@ -6,19 +6,16 @@ import Loading from '../components/Loading'
 
 export default function page() {
 
-    const [cartlist , setcartlist] = useState(() => {
-        const savedlist = localStorage.getItem("cart")
-        return savedlist ? JSON.parse(savedlist) : []
-    })
+    const [cartlist , setcartlist] = useState()
     const [cartdata ,setcart] = useState(["loading..."])
     const [totalprice , settotalprice] = useState(0)
     const [discount , setdiscount] = useState()
     const [salecartdata , setsalecartdata] = useState(["loading..."])
 
-    const [dataforbackend , setdataforbackend] = useState([])
+    const [dataforbackend , setdataforbackend] = useState()
     function removeItemFromCart(itemId) {
-      // Retrieve the cart from localStorage
-      let cart = JSON.parse(localStorage.getItem('cart'));
+      useEffect((itemId) => { // Retrieve the cart from localStorage
+      let cart = JSON.parse(window.localStorage.getItem('cart'));
   
       if (!cart) {
           console.log('Cart is empty or not found');
@@ -30,10 +27,14 @@ export default function page() {
 
   
       // Save the updated cart back to localStorage
-      localStorage.setItem('cart', JSON.stringify(cart));
+      if(typeof window !== "undefined"){
+              window.localStorage.setItem('cart', JSON.stringify(cart));
+      }
+
       setcart(cartdata.filter(item => item._id !== itemId))
       console.log(cartdata)
-      console.log(`Item with id '${itemId}' has been removed. Updated cart:`, cart);
+      console.log(`Item with id '${itemId}' has been removed. Updated cart:`, cart);},[])
+     
   }
     const [amountcalculator , setamountcalculator] = useState(pervamount => {
      return cartlist.map(item =>  ({id:item.id , amount:item.amount} ))

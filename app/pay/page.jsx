@@ -7,10 +7,7 @@ import Header from '../components/Header'
 import Loading from '../components/Loading'
 
 export default function page() {
-    const [cartlist , setcartlist] = useState(() => {
-        const savedlist = localStorage.getItem("cart")
-        return savedlist ? JSON.parse(savedlist) : []
-    })
+    const [cartlist , setcartlist] = useState()
     const [cartdata ,setcart] = useState(["loading..."])
     const [totalprice , settotalprice] = useState(0)
     const [discount , setdiscount] = useState()
@@ -24,6 +21,7 @@ export default function page() {
     useEffect(() => {if(locator === true ){ window.location='/'}},[locator])
 
     useEffect(() => {
+      setcartlist(window.localStorage.getItem("cart"))
 
 
 
@@ -65,9 +63,10 @@ export default function page() {
     const payment = (e)=>{
       e.preventDefault()
 
-
-      localStorage.removeItem('cart')
+       if(typeof window !== "undefined"){
+      window.localStorage.removeItem('cart')
       setlocator(true)
+    }
 
 
     }
