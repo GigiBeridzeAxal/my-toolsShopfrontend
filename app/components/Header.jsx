@@ -19,27 +19,27 @@ export default function Header() {
 
 
     const  [messageopened , setmessageopened] = useState(false)
-    const [cartlengt , setcartlengt] = useState(() => {
-        const savedcart = JSON.parse(localStorage.getItem('cart'))
-         return savedcart ? savedcart  : 0
-
-    }
-
+    const [cartlengt , setcartlengt] = useState()
+    const [cartitems , setcartitems] = useState()
+       
+ 
 
 
-    )
+      useEffect(() => {
+        if(typeof window !== "undefined"){
+            window.localStorage.setItem('cart', JSON.stringify(cartitems));
+        }
+        setInterval(() => {
+            if(typeof window !== "undefined"){
+                window.localStorage.setItem('cart', JSON.stringify(cartitems));
+            }
+        }, 2000);
+      },[])
 
-
-
-   setInterval(() => {
-    setcartlengt(JSON.parse(localStorage.getItem('cart')))
-   }, 1000);
 
 
     useEffect(() => {
-
-        setcartlengt(JSON.parse(localStorage.getItem('cart')))
-
+    
 
         const getmessages = async() => {
 

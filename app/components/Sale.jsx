@@ -34,16 +34,13 @@ export default function Sale() {
       console.log(raodenoba)
 
     }
-    const [cartitems , setcartitems] = useState(() => {
-      const savedcart = localStorage.getItem('cart')
-      return savedcart ? JSON.parse(savedcart) : []
-    })
+    const [cartitems , setcartitems] = useState()
 
    
 
     useEffect(() => {
       // Save cart items to localStorage whenever they change
-      localStorage.setItem('cart', JSON.stringify(cartitems));
+      window.localStorage.setItem('cart', JSON.stringify(cartitems));
 
     }, [cartitems]);
 
@@ -51,7 +48,7 @@ export default function Sale() {
 
     const addToCart = (itemId, amount) => {
       setcartitems(prevCartItems => {
-        const prevCartItemser = JSON.parse(localStorage.getItem('cart'))
+        const prevCartItemser = JSON.parse(window.localStorage.getItem('cart'))
 
         const existingItemIndex = prevCartItemser.findIndex(item => item.id === itemId);
         if (existingItemIndex > -1) {

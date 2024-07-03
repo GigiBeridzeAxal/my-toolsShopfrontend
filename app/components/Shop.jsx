@@ -22,20 +22,19 @@ export default function Shop() {
   }
   const [searcher , setsearcher] = useState()
   const [clickedbuy , setclickedbuy] = useState(false)
-  const [cartitems , setcartitems] = useState(() => {
-    const savedcart = localStorage.getItem('cart')
-    return savedcart ? JSON.parse(savedcart) : []
-  })
+  const [cartitems , setcartitems] = useState()
 
   useEffect(() => {
     // Save cart items to localStorage whenever they change
-    localStorage.setItem('cart', JSON.stringify(cartitems));
+    window.localStorage.setItem('cart', JSON.stringify(cartitems));
   }, [cartitems]);
 
 
   const addToCart = (itemId, amount) => {
     setcartitems(prevCartItems => {
-      const prevCartItemser = JSON.parse(localStorage.getItem('cart'))
+      if(typeof window !== "undefined"){
+      const prevCartItemser = JSON.parse(window.localStorage.getItem('cart'))
+      }
 
       const existingItemIndex = prevCartItemser.findIndex(item => item.id === itemId);
       console.log(existingItemIndex)
@@ -95,12 +94,14 @@ const getdata = async() => {
 
 
   },[])
+  if(typeof window !== "undefined"){
  window.addEventListener('mousemove' , (e) => {
       setx(e.pageX)
       sety(e.pageY)
 
 
     })
+  }
   if(limitednews[0] === 'loading..' ){
 
     return 
