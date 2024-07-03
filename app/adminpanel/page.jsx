@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 
 import React, { useState , useEffect } from 'react'
 import SaleSystem from './components/SaleSystem'
+import Message from './components/Message'
 
 export default function page() {
 
@@ -161,6 +162,10 @@ export default function page() {
                                {
                                 selected === "ჩასწორება" ?    <div onClick={(e) => changeselected(e)} className="cursor-pointer option text-white flex items-center choosed gap-3 justify-center"> <img src="/Eraser.png" width={30} alt="" />  <button  >ჩასწორება</button></div> :   <div onClick={(e) => changeselected(e)} className="cursor-pointer option text-white flex items-center gap-3 justify-center"> <img src="/Eraser.png" width={30} alt="" />  <button  >ჩასწორება</button></div>
                              }
+                              {
+                                selected === "სიახლე" ?    <div onClick={(e) => changeselected(e)} className="cursor-pointer option text-white flex items-center choosed gap-3 justify-center"> <img src="/MailAccount.png" width={30} alt="" />  <button  >სიახლე</button></div> :   <div onClick={(e) => changeselected(e)} className="cursor-pointer option text-white flex items-center gap-3 justify-center"> <img src="/MailAccount.png" width={30} alt="" />  <button  >სიახლე</button></div>
+                             }
+
 
                         <div className="tittle text-gray-300">ფასების კონტროლი</div>  
                         {
@@ -178,18 +183,60 @@ export default function page() {
                 <div className="rightanswer ">
                    {selected === 'დამატება' ? 
                    
-                   
+                   <>
+                              <div className="createtittle">  დამატება</div>
+ <div className="panelcreate">
+         
+                    <div className="panelcreateframe">
+                        <div className="panelcreateframetittle">დაამატე ახალი ნივთი</div>
+                        {sucess == true ? <div className="sucess text-emerald-500">Sucessfuly Created New Tool</div> : <div></div>}
+                        <input onChange={(e) => setprodname(e.target.value)} type="text" placeholder='ხელსაწყოს სახელი' />
+                        <input onChange={(e) => setprodreview(e.target.value)} type="text" placeholder='ხელსაწყოს შეფასება' />
+                        <input onChange={(e) => setprice(e.target.value)} type="text" placeholder='ხელსაწყოს ფასი' />
+                  
+                        <div className="damateba">
+                                                  <div className="aircie">აირჩიე ნივთის კატეგორია</div>  <select onChange={(e) => setcategory(e.target.value)} className='optionselector' name="" id="">
+                        <option value="მეორადი">მეორადი</option>
+                        <option value="სამუშაო ტექნიკა">სამუშაო ტექნიკა</option>
+                        <option value="სამუშაო იარაღები">სამუშაო იარაღები</option>
+
+
+                        </select>
+
+  
+                        </div>
+                              <div className="starchooser flex items-center justify-center gap-3 ">
+                                <div className="stars flex items-center gap-5 ">
+                                    {star >= 1 ?   <button value='1' onClick={(e) => setstar(1)} ><img src="/Star.png" width={30} alt="" /></button> :   <button value='1' onClick={(e) => setstar(1)} ><img src="/blackstar.png" width={30} alt="" /></button>}
+                                    {star >= 2 ?    <button onClick={(e) => setstar(2)} value='2' ><img src="/Star.png" width={30} alt="" /></button> :    <button onClick={(e) => setstar(2)} value='2' ><img src="/blackstar.png" width={30} alt="" /></button>}
+                                    {star >= 3 ?     <button onClick={(e) => setstar(3)} value={3}><img src="/Star.png" width={30} alt="" /></button>:      <button onClick={(e) => setstar(3)} value={3}><img src="/blackstar.png" width={30} alt="" /></button>}
+                                    {star >= 4 ?       <button onClick={(e) => setstar(4)} value={4}><img src="/Star.png" width={30} alt="" /></button>:        <button onClick={(e) => setstar(4)} value={4}><img src="/blackstar.png" width={30} alt="" /></button>}
+                         
+                          
+                         
+                            
+                                </div>
+                                <div className="starstittle">აირჩიე ნივთის ხარისხი</div>
+                        </div>
+                        <div className="uploadphoto">
+                            <input onChange={(e) => renderfile(e)} type="file" name="" id="" />
+                            <img src={base64} width={300} alt="" />
+                        </div>
+                      <button onClick={() => createtool()} class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+  დაამატე სამუშაო იარაღი
+</button>
+
+                        
+                    </div>
+                    
+                   </div>
+                   </>
                    
                   
                    
                    : <div></div>}
-                    {selected === 'ფასდაკლება' ? 
-                   
-                   <SaleSystem></SaleSystem>
-                  
-                   
-                   : <div></div>}
-                   
+                    {selected === 'ფასდაკლება' ?<SaleSystem></SaleSystem>: <div></div>}
+                    {selected === 'სიახლე' ? <Message></Message>: <div></div>}
                    
 
 

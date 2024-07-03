@@ -7,6 +7,53 @@ export default function SaleSystem() {
 
   const [saledate , setsaledate] = useState()
   const [saledatesucess , setsaledatesucess] = useState('hello')
+  const [prodname , setprodname] = useState()
+  const [prodreview , setprodreview] = useState()
+  const [price , setprice] = useState()
+  const [star , setstar] = useState(0)
+  const [base64 , setbase64] = useState()
+  const [category , setcategory] = useState()
+  const [sucess , setsucess] = useState()
+  const [discount , setdiscount] = useState()
+
+  const createtool = async() => {
+    const create = await axios.post("http://localhost:4000/saleadd" , {
+
+    name: prodname,
+    price: price,
+    image: base64,
+    category: category,
+    review: prodreview,
+    stars:star,
+    discount: discount
+
+    })
+    if(create){
+        console.log("Created")
+        setsucess(true)
+        setTimeout(() => {
+            setsucess(null)
+        }, 2500);
+    }else{
+        console.log("Cant Create")
+        setsucess(0)
+    }
+}
+
+const renderfile = (e) => {
+  const image = e.target.files[0]
+  const render = new FileReader()
+
+  render.onloadend = () => {
+
+      setbase64(render.result)
+      console.log(render.result)
+
+  }
+  render.readAsDataURL(image)
+
+
+}
 
   const saledateapi = async() => {
 
@@ -56,15 +103,16 @@ export default function SaleSystem() {
 
     <>
                               <div className="createtittle">  დამატება</div>
- <div className="panelcreate">
+ <div className="panelcreater">
          
                     <div className="panelcreateframe">
-                        <div className="panelcreateframetittle">დაამატე ახალი ნივთი</div>
+                        <div className="panelcreateframetittle">დაამატე ფასდაკლების ნივთი</div>
                         {sucess == true ? <div className="sucess text-emerald-500">Sucessfuly Created New Tool</div> : <div></div>}
                         <input onChange={(e) => setprodname(e.target.value)} type="text" placeholder='ხელსაწყოს სახელი' />
                         <input onChange={(e) => setprodreview(e.target.value)} type="text" placeholder='ხელსაწყოს შეფასება' />
                         <input onChange={(e) => setprice(e.target.value)} type="text" placeholder='ხელსაწყოს ფასი' />
-                  
+                        <input onChange={(e) => setdiscount(e.target.value)} type="text" placeholder='დააყენეთ ფასდაკლება' />
+                        
                         <div className="damateba">
                                                   <div className="aircie">აირჩიე ნივთის კატეგორია</div>  <select onChange={(e) => setcategory(e.target.value)} className='optionselector' name="" id="">
                         <option value="მეორადი">მეორადი</option>
@@ -73,6 +121,7 @@ export default function SaleSystem() {
 
 
                         </select>
+
 
   
                         </div>

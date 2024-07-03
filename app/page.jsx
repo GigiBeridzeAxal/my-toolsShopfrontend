@@ -1,19 +1,28 @@
 import Image from "next/image";
 import Header from "./components/Header";
-import Sections from "./components/Sections";
+
 import Shop from "./components/Shop";
 import Sale from "./components/Sale";
+import LimitedPriceSort from "./components/LimitedPriceSort";
+import Footer from "./components/Footer";
 
 export default function Home() {
+
+
   return (
 
    <>
       <Header></Header>
-      <Sections></Sections>
-      <Shop></Shop>
+
+      <Shop  ></Shop>
       <br /><br />
-      <Sale></Sale>
+      <Sale></Sale> 
       <br />
+      <LimitedPriceSort></LimitedPriceSort>
+      <br />
+      <Footer></Footer>
+
+    
    </>
   );
 }
