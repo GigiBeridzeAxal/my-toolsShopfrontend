@@ -1,7 +1,7 @@
 'use client'
 import Cookies from 'js-cookie'
 import React, { useEffect, useState } from 'react'
-import jwt from 'jsonwebtoken'
+
 import { useJwt } from 'react-jwt'
 import axios from 'axios'
 import Link from 'next/link'
